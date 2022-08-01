@@ -1,0 +1,12 @@
+{
+    "firstname": "Marc",
+    "lastname": "Nofler",
+    "email": "marc.nofler@gmail.com",
+    "adress":{
+        "street": "rue des Souris",
+        "numberHouse": 56,
+        "city": "Gesves",
+        "postalCode": 5340
+    },
+    "phoneNumber": "0451/564245"
+}
