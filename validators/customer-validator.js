@@ -5,10 +5,10 @@ const customerValidator = yup.object({
     email: yup.string().trim().email().required().max(250),
     adress:{
         street: yup.string().required().trim().max(255),
-        numberHouse: yup.number().required().max(5),
+        numberHouse: yup.number().required().positive().integer().max(5),
         boxe: yup.string().trim(),
         city: yup.string().required().trim().max(150),
-        postalCode: yup.number().required().max(5),
+        postalCode: yup.number().required().positive().integer().max(5),
     },
     phoneNumber: yup.string().required().trim()
 });

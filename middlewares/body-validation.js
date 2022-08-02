@@ -6,7 +6,7 @@ const bodyValidation = (yupValidator)=>{
             next();
         }
         catch(e){
-            return res.sendStatus(400)
+            return res.send('marche vraiment pas')
         }
     }
 }

@@ -11,7 +11,7 @@ burgerRouter.route('/')
     .post(burgerController.create)
 burgerRouter.route('/:id')
     .get(idValidator(), burgerController.getById)
-    .put(idValidator(), bodyValidation(burgerValidator), burgerController.update)
+    .put(idValidator(),  burgerController.update)
     .delete(idValidator(), burgerController.delete);
 
 module.exports = burgerRouter;

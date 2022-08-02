@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { boolean } = require('yup');
 
 
 const burgerSchema = new Schema({
@@ -20,6 +21,14 @@ const burgerSchema = new Schema({
     ingredients:{
         type:[String],
         required: true,
+    },
+    allergen:{
+        type: Boolean,
+        required: true
+    },
+    listAllergen: {
+        type: [String],
+        required: true
     },
     price:{
         type: Number

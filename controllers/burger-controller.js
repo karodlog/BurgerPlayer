@@ -30,6 +30,8 @@ const burgerController = {
             icon: req.body.icon,
             description: req.body.description,
             ingredients: req.body.ingredients,
+            allergen: req.body.allergen,
+            listAllergen: req.body.listAllergen,
             price: req.body.price
         }, {returnDocument: 'after'} );
 
@@ -37,7 +39,7 @@ const burgerController = {
             res.status(200).json(burgerToUpdated);
         }
         else{
-            return res.sendStatus(400);
+            return res.send('Marche pas');
         }
         
 
