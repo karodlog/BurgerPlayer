@@ -32,6 +32,8 @@ app.use(async(req,res,next)=>{
 //     }
 //     res.json(data);
 // })
+
+// quand on arrive sur la route /api, on utilise le module router qui lui-même fait référence à toutes nos routes (voir plus haut)
 app.use('/api', router);
 
 // on met le serveur sur écoute

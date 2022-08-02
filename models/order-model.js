@@ -4,10 +4,64 @@ const Customer = require('./customer-model');
 
 
 const orderSchema = new Schema({
-    burgerId:{
-        type: Types.ObjectId,
-        ref: Burger,
-        required: true
+    choix1:{
+        burgerId:{
+            type: Types.ObjectId,
+            ref: Burger,
+            required: false,
+        },
+        quantity:{
+            type: Number,
+            required: false
+        }   
+    },
+    choix2:{
+        burgerId:{
+            type: Types.ObjectId,
+            ref: Burger,
+            required: false,
+
+        },
+        quantity:{
+            type: Number,
+            required: false
+        }   
+    },
+    choix3:{
+        burgerId:{
+            type: Types.ObjectId,
+            ref: Burger,
+            required: false,
+
+        },
+        quantity:{
+            type: Number,
+            required: false
+        }   
+    },
+    choix4:{
+        burgerId:{
+            type: Types.ObjectId,
+            ref: Burger,
+            required: false,
+
+        },
+        quantity:{
+            type: Number,
+            required: false
+        }   
+    },
+    choix5:{
+        burgerId:{
+            type: Types.ObjectId,
+            ref: Burger,
+            required: false,
+
+        },
+        quantity:{
+            type: Number,
+            required: false
+        }   
     },
     customerId:{
         type: Types.ObjectId,
@@ -29,7 +83,6 @@ const orderSchema = new Schema({
     collection: 'Order',
     timestamps: true
 });
-
 
 const Order = model('Order', orderSchema);
 
