@@ -4,45 +4,15 @@ const Customer = require('./customer-model');
 
 
 const orderSchema = new Schema({
-    firstname:{
-        type: String,
-        required: true,
-        trim: true
+    burgerId:{
+        type: Types.ObjectId,
+        ref: Burger,
+        required: true
     },
-    lastname:{
-        type: String,
-        required: true,
-        trim: true
-    },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
-    },
-    adress:{
-        street:{
-            type: String,
-            required: true,
-            trim: true
-        },
-        numberHouse:{
-            type: Number,
-            required: true,
-            trim: true
-        },
-        boxe:{
-            type: String,
-            trim: true
-        },
-        city:{
-            type: String,
-            required: true,
-            trim: true
-        },
-        postalCode:{
-            type: Number,
-        }
+    customerId:{
+        type: Types.ObjectId,
+        ref: Customer,
+        required: true
     },
     status:{
         type: String,
@@ -50,7 +20,11 @@ const orderSchema = new Schema({
         default: 'Created',
         required: true,
         trim: true
-    }
+    },
+    customerNotes:{
+        type: String,
+        required: false
+    },
 },{
     collection: 'Order',
     timestamps: true
