@@ -12,7 +12,7 @@ customerRouter.route('/')
     .post(customerController.create);
 customerRouter.route('/:id')
     .get(idValidator(), customerController.getById)
-    .put(idValidator(), bodyValidation(customerValidator), customerController.update)
+    .put(idValidator(), customerController.update)
     .delete(idValidator(), customerController.delete);
 
 module.exports = customerRouter;

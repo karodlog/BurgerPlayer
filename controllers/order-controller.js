@@ -5,7 +5,7 @@ const orderController = {
 
         // pour filter par le statut de la commande
         let filterStatus;
-        const status = req.params.status;
+        const status = req.query.status;
         if(status){
             if(Array.isArray(status)){
                 filterStatus = {status: {$in:status}}
@@ -20,13 +20,33 @@ const orderController = {
 
         const orders = await Order.find(filterStatus)
         .populate([{
-            path: 'burgerId',
-            select: {quantity:0},
+            path: 'choix1.burgerId',
+            select: {name:1, icon:1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix2.burgerId',
+            select: {name:1, icon:1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix3.burgerId',
+            select: {name:1, icon:1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix4.burgerId',
+            select: {name:1, icon:1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix5.burgerId',
+            select: {name:1, icon:1, price: 1, _id:0},
             strictPopulate: false,
         }])
         .populate([{
             path: 'customerId',
-            select:{firstname:1, email:1, _id:0},
+            select:{firstname:1, email:1, adress:1, _id:0},
         }]);
         const count = await Order.countDocuments();
         const data = {'order': orders, 'count': count}
@@ -38,14 +58,33 @@ const orderController = {
         const id = req.params.id;
         const orders = await Order.findById(id)
         .populate([{
-            path: 'burgerId',
+            path: 'choix1.burgerId',
             select: {name: 1, icon: 1, price: 1, _id:0},
-            model: 'Burger',
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix2.burgerId',
+            select: {name: 1, icon: 1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix3.burgerId',
+            select: {name: 1, icon: 1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix4.burgerId',
+            select: {name: 1, icon: 1, price: 1, _id:0},
+            strictPopulate: false,
+        }])
+        .populate([{
+            path: 'choix5.burgerId',
+            select: {name: 1, icon: 1, price: 1, _id:0},
             strictPopulate: false,
         }])
         .populate([{
             path: 'customerId',
-            select: {adress:0, _id:0,}
+            select: {firstname:1, email:1, adress:1, _id:0}
         }]);
         if(!orders){
             return res.sendStatus(404);
@@ -61,10 +100,34 @@ const orderController = {
     },
 
     update: async (req, res)=>{
+        const id = req.params.id;
+        const {choix1, choix2, choix3, choix4, choix5,customerId,status, customerNotes} = req.body;
+        const orderToUpdated = await Order.findByIdAndUpdate(id,{
+            choix1,
+            choix2,
+            choix3,
+            choix4,
+            choix5,
+            customerId,
+            status,
+            customerNotes: customerNotes ? customerNotes : null,
+
+        }, {returnDocument: 'after'});
+        if(!orderToUpdated){
+            return res.sendStatus(404);
+        }
+        res.sendStatus(204);
+
 
     },
 
     delete: async (req, res)=>{
+        const id = req.params.id;
+        const orderToDelete = await Order.findByIdAndDelete(id);
+        if(!orderToDelete){
+            return res.sendStatus(404);
+        }
+        res.sendStatus(204)
 
     },
 }
