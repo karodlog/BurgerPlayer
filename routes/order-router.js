@@ -8,10 +8,10 @@ orderRouter.route('/:id')
     .get(orderController.getById)
     .put(orderController.update)
     .delete(orderController.delete)
-orderRouter.route('burger/:id')
-    .get((req, res)=> res.sendStatus(501))
-orderRouter.route('customer/:id')
-    .get((req, res)=> res.sendStatus(501))
+orderRouter.route('/burger/:id')
+    .get(orderController.getByBurger)
+orderRouter.route('/customer/:id')
+    .get(orderController.getByCustomer)
 
 
 module.exports = orderRouter;
