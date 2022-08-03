@@ -40,3 +40,9 @@ app.use('/api', router);
 app.listen(PORT, ()=>{
     console.log((`Server up on port: ${PORT} [${NODE_ENV}]`));
 })
+
+
+//todo  bodyvalidation qui part en cacahuète
+//todo  recherche par burger envoie toutes les commandes avec le burger mais aussi les autres burgers repris dans la même commande...
+
+//todo  update de order-controller: pas bien du tout !
